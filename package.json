@@ -1,0 +1,55 @@
+{
+  "name": "20220316-next-starter",
+  "description": "NextJs starter project",
+  "license": "MIT",
+  "repository": "https://github.com/TituxMetal/next-starter.git",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "prisma:init": "prisma db push",
+    "dev": "next dev",
+    "build": "prisma generate && next build",
+    "start": "next start",
+    "lint": "next lint",
+    "prisma:generate": "prisma generate"
+  },
+  "dependencies": {
+    "@babel/plugin-transform-react-jsx": "7.17.3",
+    "@fontsource/roboto": "4.5.3",
+    "@prisma/client": "3.11.0",
+    "next": "12.1.0",
+    "next-auth": "4.3.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-hook-form": "7.28.0",
+    "sharp": "0.30.3",
+    "styled-components": "5.3.3"
+  },
+  "devDependencies": {
+    "autoprefixer": "10.4.3",
+    "babel-plugin-macros": "3.1.0",
+    "eslint": "8.11.0",
+    "eslint-config-next": "12.1.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-import-resolver-alias": "1.1.2",
+    "postcss": "8.4.11",
+    "prettier": "2.5.1",
+    "prisma": "3.11.0",
+    "tailwindcss": "3.0.23",
+    "twin.macro": "2.8.2"
+  },
+  "alias": {
+    "~": "./src"
+  },
+  "babelMacros": {
+    "twin": {
+      "preset": "styled-components"
+    }
+  },
+  "browserslist": [
+    ">10%",
+    "chrome 76",
+    "not dead",
+    "not op_mini all"
+  ]
+}
