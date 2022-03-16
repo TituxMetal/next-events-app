@@ -1,8 +1,8 @@
 {
-  "name": "20220316-next-starter",
-  "description": "NextJs starter project",
+  "name": "20220316-next-events-app",
+  "description": "NextJs events app from NextJs Complete Guide course by Academind on Udemy https://www.udemy.com/course/nextjs-react-the-complete-guide/",
   "license": "MIT",
-  "repository": "https://github.com/TituxMetal/next-starter.git",
+  "repository": "https://github.com/TituxMetal/next-events-app.git",
   "private": true,
   "version": "0.1.0",
   "scripts": {
