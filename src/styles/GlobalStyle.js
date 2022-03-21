@@ -6,7 +6,7 @@ import '@fontsource/roboto'
 const BaseStyles = createGlobalStyle({
   ...tw`antialiased`,
   body: {
-    ...tw`bg-neutral text-white font-sans text-xl`
+    ...tw`bg-gray-600 text-white font-sans text-xl`
   }
 })
 
