@@ -8,7 +8,7 @@ export const getFilteredEvents = dateFilter => {
   const { year, month } = dateFilter
 
   const filteredEvents = DUMMY_EVENTS.filter(
-    ({ date }) => Date(date).getFullYear() === year && Date(date).getMonth() === month - 1
+    ({ date }) => new Date(date).getFullYear() === year && new Date(date).getMonth() === month - 1
   )
 
   return filteredEvents
