@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@babel/plugin-transform-react-jsx": "7.17.3",
-    "@fontsource/roboto": "4.5.3",
+    "@fontsource/roboto": "4.5.5",
     "@prisma/client": "3.11.0",
     "next": "12.1.0",
     "next-auth": "4.3.1",
