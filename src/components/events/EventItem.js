@@ -10,7 +10,7 @@ const EventItem = ({ dataId, date, description, image, isFeatured, location, tit
   const formattedAddress = formatAddress(location)
 
   return (
-    <li tw='rounded-xl my-4 overflow-hidden flex flex-col gap-4 border-0 bg-primary md:(flex-row)'>
+    <li tw='rounded-xl my-4 overflow-hidden flex flex-col gap-4 border-0 bg-primary md:(flex-row max-w-3xl mx-auto)'>
       <div tw='md:(h-56 w-2/5 overflow-visible) h-40 w-full overflow-hidden'>
         <Image
           src={`/${image}`}
