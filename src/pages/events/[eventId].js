@@ -1,20 +1,14 @@
 import { useRouter } from 'next/router'
 
+import { EventDetails, EventsResults } from '~/components'
 import { getEventById } from '~/lib'
 
 const EventDetailPage = () => {
-  const event = getEventById('e1')
+  const { query } = useRouter()
 
-  return (
-    <main>
-      <h1>Event Detail Page</h1>
-      <section>
-        <h2>{event.title}</h2>
-        <p>{event.description}</p>
-        <p>{event.location}</p>
-      </section>
-    </main>
-  )
+  const event = getEventById(query.eventId)
+
+  return event ? <EventDetails {...event} /> : <EventsResults>No event found!</EventsResults>
 }
 
 export default EventDetailPage
