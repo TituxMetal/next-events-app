@@ -2,7 +2,7 @@ import { forwardRef } from 'react'
 import tw, { styled } from 'twin.macro'
 
 const Bar = tw.section`flex p-2 bg-primary`
-const Container = tw.section`flex flex-auto flex-col w-full max-w-screen-lg mx-auto py-4`
+const Container = tw.section`flex-auto w-full mx-auto`
 const Main = styled.main(tw`flex flex-col h-screen`)
 
 const Text = styled.p(({ $brand, $small }) => [

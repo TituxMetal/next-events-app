@@ -21,7 +21,7 @@ const monthsOptions = [
   'December'
 ]
 
-const Container = tw.div`my-2 mx-auto flex justify-between gap-4 flex-row flex-wrap w-11/12 md:(flex-col w-10/12 max-w-screen-lg)`
+const Container = tw.div`my-4 mx-auto flex justify-between gap-4 flex-row flex-wrap w-11/12 md:(flex-col w-10/12 max-w-4xl)`
 const Field = tw.div`flex-1 flex gap-2 my-1 items-center justify-between md:mx-2`
 const Form = tw.form`w-full bg-primary rounded-md p-4 flex gap-1 flex-col md:(flex-row m-auto)`
 const Label = tw.label`font-bold`
