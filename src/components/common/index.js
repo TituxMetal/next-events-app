@@ -1,3 +1,5 @@
 export * from './Button'
 export { default as DataList } from './DataList'
+export { default as Thumbnail } from './Thumbnail'
+export * from './summary'
 export * from './ui'
