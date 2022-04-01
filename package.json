@@ -51,5 +51,8 @@
     "chrome 76",
     "not dead",
     "not op_mini all"
-  ]
+  ],
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  }
 }
