@@ -1,48 +1,51 @@
-import { useRouter } from 'next/router'
-import { useEffect, useMemo, useState } from 'react'
 import tw from 'twin.macro'
 
 import { ButtonLink, DataList, EventItem, EventsResults, List } from '~/components'
 import { formatDate, getFilteredEvents } from '~/lib'
+import { prisma } from '~/prisma'
 
 const Container = tw.section`flex flex-col mx-auto w-full text-center`
 
-const FilteredEventsPage = () => {
-  const [filter, setFilter] = useState({ events: null, error: '' })
-  const [date, setDate] = useState()
+const FilteredEventsPage = ({ eventsDate, events, error }) => (
+  <Container>
+    {error ? (
+      <EventsResults>{error}</EventsResults>
+    ) : !events || events.length === 0 ? (
+      <EventsResults>No events found for the choosen filter!</EventsResults>
+    ) : (
+      <>
+        <EventsResults>Events in {eventsDate}</EventsResults>
+        <List>
+          <DataList itemComponent={EventItem} dataList={events} />
+        </List>
+      </>
+    )}
+  </Container>
+)
 
-  const { query } = useRouter()
+/** Get data from PRISMA */
 
-  const filteredData = useMemo(
-    () => query.slug && query.slug.filter(item => !isNaN(item)),
-    [query.slug]
+export const getServerSideProps = async (req, res) => {
+  const [year, month] = req.query.slug && req.query.slug.filter(item => !isNaN(item))
+  const isInvalidFilter = isNaN(+year) || isNaN(+month)
+  const message = 'Invalid filter. Please adjust your values!'
+
+  if (isInvalidFilter) {
+    return { props: { events: null, error: message } }
+  }
+
+  const events = await prisma.event.findMany({ take: 100 })
+  const filtered = events.filter(
+    ({ date }) => new Date(date).getFullYear() === +year && new Date(date).getMonth() === +month - 1
   )
+  const serializedData = JSON.parse(JSON.stringify(filtered))
 
-  useEffect(() => {
-    if (filteredData) {
-      const data = getFilteredEvents(filteredData)
-
-      setDate(formatDate(new Date(filteredData[0], filteredData[1] - 1)))
-      setFilter(state => ({ ...state, ...data }))
+  return {
+    props: {
+      events: serializedData,
+      eventsDate: formatDate(`${year}-${month}`)
     }
-  }, [filteredData])
-
-  return (
-    <Container>
-      {filter.error ? (
-        <EventsResults>{filter.error}</EventsResults>
-      ) : !filter.events || filter.events.length === 0 ? (
-        <EventsResults>No events found for the choosen filter!</EventsResults>
-      ) : (
-        <>
-          <EventsResults>Events in {date}</EventsResults>
-          <List>
-            <DataList itemComponent={EventItem} dataList={filter.events} />
-          </List>
-        </>
-      )}
-    </Container>
-  )
+  }
 }
 
 export default FilteredEventsPage

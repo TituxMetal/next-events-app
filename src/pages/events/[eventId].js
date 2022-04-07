@@ -1,14 +1,20 @@
 import { useRouter } from 'next/router'
 
 import { EventDetails, EventsResults } from '~/components'
-import { getEventById } from '~/lib'
+import { prisma } from '~/prisma'
 
-const EventDetailPage = () => {
-  const { query } = useRouter()
+const EventDetailPage = ({ event }) =>
+  event ? <EventDetails {...event} /> : <EventsResults>No event found!</EventsResults>
 
-  const event = getEventById(query.eventId)
+/** Get data from PRISMA */
+export const getServerSideProps = async (req, res) => {
+  const eventId = req.query.eventId
+  const data = await prisma.event.findUnique({ where: { id: eventId } })
+  const serializedData = JSON.parse(JSON.stringify(data))
 
-  return event ? <EventDetails {...event} /> : <EventsResults>No event found!</EventsResults>
+  return {
+    props: { event: serializedData }
+  }
 }
 
 export default EventDetailPage
