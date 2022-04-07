@@ -1,5 +1,3 @@
-import Head from 'next/head'
-
 import { DataList, EventItem, List } from '~/components'
 import { prisma } from '~/prisma'
 
