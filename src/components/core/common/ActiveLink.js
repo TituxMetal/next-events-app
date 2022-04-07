@@ -5,7 +5,7 @@ import { Children, cloneElement, forwardRef } from 'react'
 const ActiveLink = forwardRef(({ as, href, linkChild, ...props }, ref) => {
   ActiveLink.displayName = 'ActiveLink'
 
-  const { asPath, isReady } = useRouter()
+  const { asPath } = useRouter()
   const isActive = asPath === href
   const child = Children.only(linkChild)
 

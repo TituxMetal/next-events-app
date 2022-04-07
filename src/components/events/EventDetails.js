@@ -1,6 +1,6 @@
-import tw, { styled } from 'twin.macro'
+import tw from 'twin.macro'
 
-import { AddressInfo, DateInfo, Icon, Thumbnail } from '~/components'
+import { AddressInfo, DateInfo, Thumbnail } from '~/components'
 import { formatAddress, formatDate } from '~/lib'
 
 const Container = tw.section`mt-4 py-4 flex flex-col gap-4 justify-evenly md:(m-0)`

@@ -3,7 +3,6 @@ import { useRef, useState } from 'react'
 import tw from 'twin.macro'
 
 import { Button } from '~/components'
-import { getFilteredEvents } from '~/lib'
 
 const monthsOptions = [
   'Select Month',
