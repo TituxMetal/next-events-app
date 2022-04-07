@@ -2,6 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "~/prisma": ["prisma"],
       "~/*": ["src/*"]
     }
   }
