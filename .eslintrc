@@ -12,6 +12,7 @@
     "arrow-body-style": ["error", "as-needed"],
     "arrow-parens": ["error", "as-needed"],
     "jsx-quotes": ["error", "prefer-single"],
+    "no-unused-vars": "error",
     "import/order": [
       "error",
       {
