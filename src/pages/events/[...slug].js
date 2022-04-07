@@ -1,7 +1,7 @@
 import tw from 'twin.macro'
 
-import { ButtonLink, DataList, EventItem, EventsResults, List } from '~/components'
-import { formatDate, getFilteredEvents } from '~/lib'
+import { DataList, EventItem, EventsResults, List } from '~/components'
+import { formatDate } from '~/lib'
 import { prisma } from '~/prisma'
 
 const Container = tw.section`flex flex-col mx-auto w-full text-center`
@@ -25,7 +25,7 @@ const FilteredEventsPage = ({ eventsDate, events, error }) => (
 
 /** Get data from PRISMA */
 
-export const getServerSideProps = async (req, res) => {
+export const getServerSideProps = async req => {
   const [year, month] = req.query.slug && req.query.slug.filter(item => !isNaN(item))
   const isInvalidFilter = isNaN(+year) || isNaN(+month)
   const message = 'Invalid filter. Please adjust your values!'
