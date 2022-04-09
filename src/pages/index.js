@@ -13,11 +13,15 @@ const HomePage = ({ events }) => (
 
 /** Get data from PRISMA */
 export const getStaticProps = async () => {
-  const data = await prisma.event.findMany({ where: { isFeatured: true } })
+  const data = await prisma.event.findMany({
+    where: { isFeatured: true },
+    orderBy: { date: 'desc' }
+  })
   const serializedData = JSON.parse(JSON.stringify(data))
 
   return {
-    props: { events: serializedData }
+    props: { events: serializedData },
+    revalidate: 30
   }
 }
 
