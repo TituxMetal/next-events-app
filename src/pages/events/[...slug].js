@@ -25,8 +25,8 @@ const FilteredEventsPage = ({ eventsDate, events, error }) => (
 
 /** Get data from PRISMA */
 
-export const getServerSideProps = async req => {
-  const [year, month] = req.query.slug && req.query.slug.filter(item => !isNaN(item))
+export const getStaticProps = async req => {
+  const [year, month] = req.params.slug && req.params.slug.filter(item => !isNaN(item))
   const isInvalidFilter = isNaN(+year) || isNaN(+month)
   const message = 'Invalid filter. Please adjust your values!'
 
@@ -34,18 +34,33 @@ export const getServerSideProps = async req => {
     return { props: { events: null, error: message } }
   }
 
-  const events = await prisma.event.findMany({ take: 100 })
-  const filtered = events.filter(
-    ({ date }) => new Date(date).getFullYear() === +year && new Date(date).getMonth() === +month - 1
-  )
-  const serializedData = JSON.parse(JSON.stringify(filtered))
+  const formatedDateInDb = `${+year}-${+month < 10 ? `0${month}` : month}`
+
+  const events = await prisma.event.findMany({
+    take: 100,
+    where: { date: { contains: formatedDateInDb } },
+    orderBy: { date: 'asc' }
+  })
+  const serializedData = JSON.parse(JSON.stringify(events))
 
   return {
     props: {
       events: serializedData,
       eventsDate: formatDate(`${year}-${month}`)
-    }
+    },
+    revalidate: 30
   }
+}
+
+export const getStaticPaths = async () => {
+  const events = await prisma.event.findMany({ take: 100, select: { date: true } })
+  const paths = events.map(event => ({
+    params: {
+      slug: [`${new Date(event.date).getFullYear()}`, `${new Date(event.date).getMonth() + 1}`]
+    }
+  }))
+
+  return { paths, fallback: 'blocking' }
 }
 
 export default FilteredEventsPage
