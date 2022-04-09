@@ -9,7 +9,7 @@ const Container = styled.div(({ $rounded }) => [
 const Thumbnail = ({ image, alt, ...rest }) => (
   <Container {...rest}>
     <Image
-      src={`/${image}`}
+      src={`${image}`}
       alt={alt}
       layout='responsive'
       objectFit='cover'
