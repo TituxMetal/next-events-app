@@ -58,8 +58,8 @@ const EventsSearch = () => {
             onChange={() => setYear(+yearInputRef.current.value)}
           >
             <option value='0'>Select Year</option>
-            <option value='2021'>2021</option>
             <option value='2022'>2022</option>
+            <option value='2023'>2023</option>
           </Select>
         </Field>
         <Field>
