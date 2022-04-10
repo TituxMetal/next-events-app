@@ -11,8 +11,11 @@ export const getStaticProps = async req => {
   const serializedData = JSON.parse(JSON.stringify(data))
 
   return {
-    props: { event: serializedData },
-    revalidate: 10
+    props: {
+      event: serializedData,
+      seo: { title: serializedData.title, description: serializedData.description }
+    },
+    revalidate: 30
   }
 }
 
