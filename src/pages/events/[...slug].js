@@ -42,13 +42,20 @@ export const getStaticProps = async req => {
     orderBy: { date: 'asc' }
   })
   const serializedData = JSON.parse(JSON.stringify(events))
+  const eventsDate = formatDate(`${year}-${month}`)
 
   return {
     props: {
       events: serializedData,
-      eventsDate: formatDate(`${year}-${month}`)
+      eventsDate,
+      seo: {
+        title: serializedData.length
+          ? `${serializedData.length} Filtered Events`
+          : 'No events found for the choosen filter!',
+        description: `All events for ${eventsDate}.`
+      }
     },
-    revalidate: 30
+    revalidate: 120
   }
 }
 
