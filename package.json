@@ -22,7 +22,7 @@
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-hook-form": "7.30.0",
-    "sharp": "0.30.3",
+    "sharp": "0.30.4",
     "styled-components": "5.3.5"
   },
   "devDependencies": {
