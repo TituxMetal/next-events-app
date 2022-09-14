@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@faker-js/faker": "7.5.0",
-    "autoprefixer": "10.4.10",
+    "autoprefixer": "10.4.11",
     "babel-plugin-macros": "3.1.0",
     "eslint": "8.23.0",
     "eslint-config-next": "12.3.0",
