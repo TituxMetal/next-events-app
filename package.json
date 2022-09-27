@@ -23,7 +23,7 @@
     "react-dom": "18.2.0",
     "react-hook-form": "7.36.1",
     "sharp": "0.30.7",
-    "styled-components": "5.3.5"
+    "styled-components": "5.3.6"
   },
   "devDependencies": {
     "@faker-js/faker": "7.5.0",
