@@ -14,7 +14,7 @@
     "prisma:generate": "prisma generate"
   },
   "dependencies": {
-    "@babel/plugin-transform-react-jsx": "7.19.0",
+    "@babel/plugin-transform-react-jsx": "7.20.7",
     "@fontsource/roboto": "4.5.8",
     "@prisma/client": "4.8.0",
     "next": "13.0.7",
